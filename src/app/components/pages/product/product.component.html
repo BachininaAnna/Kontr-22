@@ -1,10 +1,18 @@
-<div class="product d-flex justify-content-center">
-  <div class="card">
-    <img src="../../../assets/images/{{product.image}}" class="card-img-top" alt="1">
-    <div class="card-body px-4">
-      <h5 class="card-title mt-1 mb-3">{{product.title}}</h5>
-      <p class="card-text mb-6">{{product.description}}</p>
-      <a routerLink="/product-card" class="btn btn-primary mb-1">Подробнее</a>
+<section class="mb-2">
+  <div class="container-xxl justify-content-center">
+    <p class="h2">Описание чая</p>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4 justify-content-center">
+      <div class="product d-flex justify-content-center">
+        <div class="card">
+          <img src="../../../assets/images/{{product.image}}" class="card-img-top">
+          <div class="card-body px-4">
+            <h5 class="card-title mt-1 mb-3">{{product.title}}</h5>
+            <p class="card-text mb-6">{{product.description}}</p>
+            <a class="btn btn-primary mb-1" (click)="addToCart(product.title)">Купить</a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
+</section>
+

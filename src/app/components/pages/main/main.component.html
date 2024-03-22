@@ -3,8 +3,8 @@
     <div class="arrows position-relative bg-transparent">
       <div class="main-images">
         <div class="card border-0">
-          <img src="../../../assets/images/main-1.png" class="card-img d-none d-md-block" alt="main-1">
-          <img src="../../../assets/images/tea-1.png" class="card-img d-block d-md-none" alt="main-1">
+          <img src="../../../assets/images/main-1.png" class="card-img d-none d-md-block">
+          <img src="../../../assets/images/tea-1.png" class="card-img d-block d-md-none">
           <div class="card-img-overlay row d-none d-md-flex align-items-end w-75 h-75 m-5">
             <h5 class="card-title fw-bold">Скидки на травянные чаи</h5>
             <p class="card-text fs-5">Узай все подробности, заполнив заявку</p>
@@ -109,3 +109,17 @@
     </div>
   </div>
 </section>
+
+<div class="modal bg-opacity-10 bg-black d-block"  *ngIf="isShow" >
+  <div class="modal-dialog my-5">
+    <div class="modal-content">
+      <div class="modal-header border-bottom-0">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="close()"></button>
+      </div>
+      <div class="modal-body d-block text-center row">
+        <h5>Посмотрите наши чайные коллекции</h5>
+        <a routerLink="/products" type="button" class="btn btn-primary m-3">Смотреть</a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,7 +1,6 @@
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ProductService} from "../../../services/product-service.service";
 import {ProductType} from "../../../types/product.type";
-import {ProductComponent} from "../product/product.component";
 
 @Component({
   selector: 'products',

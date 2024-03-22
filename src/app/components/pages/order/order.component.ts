@@ -14,12 +14,15 @@ export class OrderComponent implements OnInit {
     phone: ['', [Validators.required, Validators.pattern('^\\+[0-9]{11}'), Validators.maxLength(12)]],
     country: ['', [Validators.required]],
     zip: ['', [Validators.required, Validators.pattern('[0-9]{6}'), Validators.maxLength(6)]],
-    product: [''],
+    product: ['this.cartService.product'],
     address: ['', [Validators.required, Validators.pattern('^[а-яА-Я\\d\\s\\-\\/]+$'), Validators.minLength(10)]],
     comment: [''],
   });
 
-  constructor(private cartService: CartService, private fb: FormBuilder) {
+  response: number = 0;
+  successResponse: boolean = false;
+  errorResponse: boolean = false;
+  constructor(public cartService: CartService, private fb: FormBuilder) {
   }
 
   ngOnInit(): void {
@@ -43,6 +46,11 @@ export class OrderComponent implements OnInit {
   createOrder() {
     if (!this.checkoutForms.invalid) {
       console.log('valid all good');
+    }
+    if (this.response === 1){
+      this.successResponse = !this.successResponse;
+    }else{
+      this.errorResponse = !this.errorResponse
     }
   }
 }

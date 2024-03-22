@@ -2,12 +2,13 @@
   <div class="container d-flex justify-content-center">
 
     <form class="row mb-5 needs-validation" novalidate [formGroup]="checkoutForms"
-          id="submitForm">
+          id="submitForm"
+          *ngIf="!successResponse">
       <p class="h2">Сделать заказ</p>
 
       <div class="mb-3 col-sm-6 col-xs-12">
         <label for="validationZip" class="form-label">Товар</label>
-        <input type="text" class="form-control" placeholder="" disabled>
+        <input type="text" class="form-control" placeholder="" disabled [value]="cartService.product">
       </div>
       <div class="mb-3 col-sm-6 col-xs-12">
         <label for="validationZip" class="form-label">Комментарий к заказу</label>
@@ -32,7 +33,7 @@
 
       <div class="mb-3 col-lg-4 col-md-6 col-xs-12">
         <label for="validationLastName" class="form-label">Фамилия</label>
-        <input type="text" class="form-control" id="validationLastName"  formControlName="last_name"
+        <input type="text" class="form-control" id="validationLastName" formControlName="last_name"
                [class]="(isInvalid('last_name') || isRequiredError('last_name'))
                  && isDirty('last_name') ? 'is-invalid'
                  : !isInvalid('last_name') ? 'is-valid' : ''">
@@ -121,10 +122,11 @@
         <button type="button" class="btn btn-primary mt-4 mb-3 hvr-shadow" id="create-order"
                 (click)="createOrder()">Отправить
         </button>
+        <div class="text-danger fw-bold" *ngIf="errorResponse">Произошла ошибка. Попробуйте еще раз</div>
       </div>
     </form>
-    <div class="modal-body mx-4">
-      <p class="h2 wow animate__fadeIn">Спасибо за заказ!<br>
+    <div class="modal-body mx-4 d-block" *ngIf="successResponse">
+      <p class="h2">Спасибо за заказ!<br>
         Мы свяжемся с вами в ближайшее время!</p>
     </div>
 
