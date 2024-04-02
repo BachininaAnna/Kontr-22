@@ -1,52 +1,26 @@
-import { Injectable } from '@angular/core';
+import {Injectable, OnInit} from '@angular/core';
 import {ProductType} from "../types/product.type";
+import {HttpClient} from "@angular/common/http";
+import {Observable} from "rxjs";
 
 @Injectable()
-export class ProductService {
-  private products: ProductType[] =  [
-    {
-      id: 1,
-      image: 'product-1.png',
-      title: 'Детокс чай лайм',
-      description: 'Великолепный чай внесет в вашу жизнь яркие краски и вкус расслабления'
-    },
-    {
-      id: 2,
-      image: 'product-1.png',
-      title: 'Детокс чай лайм',
-      description: 'Великолепный чай внесет в вашу жизнь яркие краски и вкус расслабления'
-    },
-    {
-      id: 3,
-      image: 'product-1.png',
-      title: 'Детокс чай лайм',
-      description: 'Великолепный чай внесет в вашу жизнь яркие краски и вкус расслабления'
-    },
-    {
-      id: 4,
-      image: 'product-1.png',
-      title: 'Детокс чай лайм',
-      description: 'Великолепный чай внесет в вашу жизнь яркие краски и вкус расслабления'
-    },
-    {
-      id: 5,
-      image: 'product-1.png',
-      title: 'Детокс чай лайм',
-      description: 'Великолепный чай внесет в вашу жизнь яркие краски и вкус расслабления'
-    },
-    {
-      id: 6,
-      image: 'product-1.png',
-      title: 'Детокс чай лайм',
-      description: 'Великолепный чай внесет в вашу жизнь яркие краски и вкус расслабления'
-    },
-  ]
-  public getProducts(): ProductType[] {
-    return this.products
-  }
-  public getProduct(id: number): ProductType | undefined{
-    return this.products.find(item => (item.id === id));
+export class ProductService implements OnInit{
+  constructor(private http: HttpClient) {}
+  ngOnInit() {}
+
+  getProducts(): Observable<ProductType[]> {
+    return this.http.get<ProductType[]>('https://testologia.site/tea');
   }
 
-  constructor() { }
+  getProduct(id: number): Observable<ProductType> {
+    return this.http.get<ProductType>(`https://testologia.site/tea?id=${id}`);
+  }
+
+  createOrder(data: { product: string, address: string, phone: string }) {
+    return this.http.post<{ success: boolean, message?: string }>(`https://testologia.site/order-tea`, data);
+  }
+
+  searchProducts(name: string){
+    return this.http.get<ProductType[]>(`https://testologia.site/tea?search=${name}`);
+  }
 }

@@ -9,8 +9,8 @@ const routes: Routes = [
   {path: '', component: MainComponent},
   {path: 'products', component: ProductsComponent},
   {path: 'products/:id', component: ProductComponent},
-  {path: 'order', component: OrderComponent},
-  {path: '**', component: MainComponent},
+  {path: 'order/:id', component: OrderComponent},
+  {path: '**', redirectTo: ''},
 ];
 
 

@@ -8,8 +8,10 @@ import {ProductComponent} from './components/pages/product/product.component';
 import {ProductsComponent} from './components/pages/products/products.component';
 import {HeaderComponent} from './components/common/header/header.component';
 import {FooterComponent} from './components/common/footer/footer.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ProductCardComponent} from "./components/common/product-card/product-card.component";
+import {HttpClientModule} from "@angular/common/http";
+import {TextResizePipe} from "./pipes/text-resize.pipe";
 import {ProductService} from "./services/product-service.service";
 
 
@@ -22,12 +24,15 @@ import {ProductService} from "./services/product-service.service";
     MainComponent,
     ProductComponent,
     ProductsComponent,
-    ProductCardComponent
+    ProductCardComponent,
+    TextResizePipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]

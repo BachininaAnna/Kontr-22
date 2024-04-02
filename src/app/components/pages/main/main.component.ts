@@ -15,17 +15,19 @@ export class MainComponent implements OnInit {
     this.observable = new Observable((observer) => {
       setTimeout(() => {
         observer.next(true);
-      }, 5000)
+      }, 3000)
     })
   }
 
   ngOnInit(): void {
     this.observable.subscribe((param) => {
-     console.log(param)
+      if(param){
+        this.showPopup();
+      }
     })
   }
 
-  close() {
+  showPopup() {
     this.isShow = !this.isShow;
   }
 }

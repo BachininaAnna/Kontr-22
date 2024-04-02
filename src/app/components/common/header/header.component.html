@@ -18,8 +18,10 @@
       </ul>
       <form class="d-flex" role="search">
         <input class="form-control me-2 px-3 py-2 rounded-1 bg-white" type="search" placeholder="Поиск чая"
-               aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Найти</button>
+               aria-label="Search"
+               [value]="searchProducts.title"
+               [(ngModel)]="searchProducts.title" [ngModelOptions]="{standalone: true}">
+        <button class="btn btn-outline-success" type="button" [routerLink]="['/products']">Найти</button>
       </form>
     </div>
   </div>

@@ -63,15 +63,12 @@ body {
 }
 
 .row .card {
-  max-width: 416px;
-  height: 362px;
   border: 1px solid #E3E3E3;
   border-radius: 4px;
 }
 
 .row .card-img-top {
   border-radius: 4px 4px 0 0;
-  width: 100%;
 }
 
 .row .card-title {
@@ -84,6 +81,7 @@ body {
   font-size: 16px;
   line-height: 24px;
   color: black;
+  min-height: 72px;
 }
 
 .row .btn-primary {
@@ -96,8 +94,8 @@ body {
 }
 
 /*********ACCORDION********************************************************************************/
-.accordion-flush .accordion-item .accordion-button,
-.accordion-flush .accordion-item .accordion-button.collapsed {
+.accordion-flush > .accordion-item > .accordion-header .accordion-button,
+.accordion-flush > .accordion-item > .accordion-header .accordion-button.collapsed {
   border-radius: 10px;
   color: #FFFFFF;
   background: linear-gradient(360deg, #076BFF 0%, #007BFF 100%);

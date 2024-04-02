@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {SearchProductsService} from "../../../services/search-products.service";
 
 @Component({
   selector: 'header-component',
@@ -7,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  //searchProducts: string = '';
+  constructor(public searchProducts: SearchProductsService) {}
 
   ngOnInit(): void {
   }
