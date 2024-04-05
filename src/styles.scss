@@ -1,5 +1,9 @@
-html, body {
-  height: 100%;
+.products-section,
+.product-section, {
+  min-height: 90vh;
+}
+.order-section {
+  min-height: 110vh;
 }
 
 body {

@@ -1,30 +1,40 @@
-import {Component, OnInit} from '@angular/core';
-import {Observable} from "rxjs";
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Observable, Subscription} from "rxjs";
 
 @Component({
   selector: 'main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })
-export class MainComponent implements OnInit {
+export class MainComponent implements OnInit, OnDestroy {
 
   isShow: boolean = false;
-  private observable: Observable<boolean>;
-
+  readonly observer: Observable<boolean>;
+  private subscription: Subscription | null = null;
   constructor() {
-    this.observable = new Observable((observer) => {
-      setTimeout(() => {
+    this.observer = new Observable((observer) => {
+      const timeout = setTimeout(() => {
         observer.next(true);
-      }, 3000)
+      }, 10000);
+
+      return{
+        unsubscribe() {
+          clearTimeout(timeout);
+        }
+      }
     })
   }
 
   ngOnInit(): void {
-    this.observable.subscribe((param) => {
+    this.subscription = this.observer.subscribe((param) => {
       if(param){
         this.showPopup();
       }
     })
+  }
+
+ ngOnDestroy() {
+    this.subscription?.unsubscribe();
   }
 
   showPopup() {

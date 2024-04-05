@@ -1,4 +1,4 @@
-<section class="h-100">
+<section class="order-section">
   <div class="container d-flex justify-content-center">
 
     <form class="row mb-5 needs-validation" novalidate [formGroup]="checkoutForms"
@@ -61,7 +61,7 @@
           Пожалуйста, заполните телефон.
         </div>
         <div class="invalid-feedback" *ngIf="isPatternError('phone')">
-          Введите телефон в формате: +79999999999
+          Введите телефон в формате: +79999999999, 79999999999, 89999999999
         </div>
       </div>
 
@@ -114,7 +114,7 @@
           Пожалуйста, заполните адрес.
         </div>
         <div class="invalid-feedback" *ngIf="isPatternError('address')">
-          Адрес может состоять из букв, цифр, пробелов и знаков: "-", "/".
+          Адрес может состоять из русских букв, цифр, пробелов, знаков: "-", "/" и содержать 10-20 символов.
         </div>
       </div>
 

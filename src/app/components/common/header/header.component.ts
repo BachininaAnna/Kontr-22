@@ -4,14 +4,19 @@ import {SearchProductsService} from "../../../services/search-products.service";
 @Component({
   selector: 'header-component',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+  show = false;
 
-  //searchProducts: string = '';
-  constructor(public searchProducts: SearchProductsService) {}
-
-  ngOnInit(): void {
+  constructor(public searchService: SearchProductsService) {
   }
 
+  searchTitle: string = '';
+
+  ngOnInit(): void {
+    this.searchService.show$.subscribe((data: boolean) => {
+      this.show = data
+    })
+  }
 }
