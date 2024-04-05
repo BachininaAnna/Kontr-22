@@ -2,6 +2,7 @@
 .product-section, {
   min-height: 90vh;
 }
+
 .order-section {
   min-height: 110vh;
 }
@@ -123,6 +124,10 @@ body {
 
 #submitForm {
   max-width: 856px;
+}
+
+.loader-bg {
+
 }
 
 @media screen and (max-width: 1200px) {

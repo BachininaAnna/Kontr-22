@@ -30,6 +30,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
         this.productService.searchProducts(params['search'])
           .subscribe(data => {
             if (data.length) {
+              this.loading = false;
               this.products = data;
             } else {
               this.searchService.notFoundProducts();

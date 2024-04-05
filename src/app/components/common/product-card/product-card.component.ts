@@ -16,7 +16,8 @@ export class ProductCardComponent implements OnInit {
       id: 0,
       image: '',
       title: '',
-      description: ''
+      description: '',
+      price: ''
     }
   }
   ngOnInit(): void {

@@ -19,7 +19,8 @@ export class ProductComponent implements OnInit, OnDestroy  {
       id: 0,
       image: '',
       title: '',
-      description: ''
+      description: '',
+      price: ''
     }
   }
 

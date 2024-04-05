@@ -22,7 +22,7 @@ export class OrderComponent implements OnInit, OnDestroy {
       Validators.pattern('^[а-яА-Я\\d\\s\\-\\/]{10,20}$')]],
     comment: [''],
   });
-
+  orderBtn: HTMLElement | null = document.getElementById('create-order');
   product: ProductType;
   successResponse: boolean = false;
   errorResponse: boolean = false;
@@ -36,7 +36,8 @@ export class OrderComponent implements OnInit, OnDestroy {
       id: 0,
       image: '',
       title: '',
-      description: ''
+      description: '',
+      price: ''
     }
   }
 
@@ -53,6 +54,9 @@ export class OrderComponent implements OnInit, OnDestroy {
         this.router.navigate(['/products']);
       }
     });
+    if(this.orderBtn){
+      this.orderBtn.removeAttribute("disabled");
+    }
   }
 
   ngOnDestroy() {
@@ -61,7 +65,12 @@ export class OrderComponent implements OnInit, OnDestroy {
   }
 
   createOrder() {
+
     if (!this.checkoutForms.invalid) {
+
+      if(this.orderBtn){
+        this.orderBtn.setAttribute("disabled", "disabled");
+      }
 
       this.subscriptionOrder = this.productService.createOrder({
         name: this.checkoutForms.get('name')?.value,
@@ -76,8 +85,14 @@ export class OrderComponent implements OnInit, OnDestroy {
         .subscribe(response => {
           if (response.success && !response.message) {
             this.successResponse = true;
+            setTimeout(() => {
+              this.router.navigate(['/products']);
+            }, 3000);
           } else {
             this.errorResponse = true;
+            if(this.orderBtn){
+              this.orderBtn.removeAttribute("disabled");
+            }
           }
         })
     }
