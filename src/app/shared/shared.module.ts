@@ -6,6 +6,7 @@ import {ProductCardComponent} from "./components/product-card/product-card.compo
 import {TextResizePipe} from "./pipes/text-resize.pipe";
 import {RouterLink, RouterLinkActive, RouterLinkWithHref} from "@angular/router";
 import {FormsModule} from "@angular/forms";
+import {NgbModule, NgbNav, NgbNavbar} from "@ng-bootstrap/ng-bootstrap";
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {FormsModule} from "@angular/forms";
         RouterLinkActive,
         FormsModule,
         RouterLinkWithHref,
-        RouterLink
+        RouterLink,
+      NgbModule
     ]
 })
 export class SharedModule { }

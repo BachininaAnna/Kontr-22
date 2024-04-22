@@ -11,6 +11,7 @@ import {Router} from "@angular/router";
 export class HeaderComponent implements OnInit {
   show = false;
   searchTitle: string = '';
+  toggle: boolean = false;
   constructor(public searchService: SearchProductsService,
               private router: Router) {
   }
@@ -20,7 +21,8 @@ export class HeaderComponent implements OnInit {
       this.show = data
     });
   }
-  eventInput(){
+
+  eventInput() {
     this.router.navigate(['/products', {search: this.searchTitle}]);
   }
 }
