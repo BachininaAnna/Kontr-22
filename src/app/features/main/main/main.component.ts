@@ -1,6 +1,7 @@
 import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import {Observable, Subscription} from "rxjs";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {environment} from "../../../../environments/environment";
 
 @Component({
   selector: 'main',
@@ -11,6 +12,7 @@ export class MainComponent implements OnInit, OnDestroy, AfterViewInit {
 
   readonly observer: Observable<boolean>;
   private subscription: Subscription | null = null;
+  mainImageAddress: string = environment.mainImageAddress;
 
   constructor(private modalService: NgbModal) {
 
