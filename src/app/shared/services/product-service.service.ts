@@ -1,16 +1,9 @@
 import {Injectable, OnInit} from '@angular/core';
-import {ProductType} from "../types/product.type";
 import {HttpClient} from "@angular/common/http";
 import {catchError, map, Observable, of} from "rxjs";
-import {OrderData} from "../types/order-data";
-import {
-  AbstractControl,
-  ValidationErrors,
-  ValidatorFn,
-  ɵElement,
-  ɵFormGroupValue,
-  ɵTypedOrUntyped
-} from "@angular/forms";
+import {ProductType} from "../../../types/product.type";
+import {OrderData} from "../../../types/order-data";
+
 
 @Injectable()
 export class ProductService implements OnInit {

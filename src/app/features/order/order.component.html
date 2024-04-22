@@ -1,10 +1,11 @@
 <section class="order-section">
   <div class="container d-flex justify-content-center">
 
-    <form class="row mb-5 needs-validation" novalidate [formGroup]="checkoutForms"
+    <form class="row mb-5 mt-5 needs-validation" novalidate [formGroup]="checkoutForms"
           id="submitForm"
+          (ngSubmit)="createOrder()"
           *ngIf="!successResponse">
-      <p class="h2">Сделать заказ</p>
+      <p class="custom-h2">Сделать заказ</p>
 
       <div class="mb-3 col-sm-6 col-xs-12">
         <label for="validationZip" class="form-label">Товар</label>
@@ -27,7 +28,7 @@
           Пожалуйста, заполните ваше имя.
         </div>
         <div class="invalid-feedback" *ngIf="isPatternError('name')">
-          Имя должно состоять только из букв.
+          Имя должно состоять только из русских букв.
         </div>
       </div>
 
@@ -44,7 +45,7 @@
           Пожалуйста, заполните вашу фамилию.
         </div>
         <div class="invalid-feedback" *ngIf="isPatternError('last_name')">
-          Фамилия должна состоять только из букв.
+          Фамилия должна состоять только из русских букв.
         </div>
       </div>
 
@@ -119,14 +120,14 @@
       </div>
 
       <div class="col-auto">
-        <button type="button" class="btn btn-primary mt-4 mb-3 hvr-shadow" id="create-order"
-                (click)="createOrder()">Отправить
+        <button class="btn btn-primary mt-4 mb-3 hvr-shadow" id="create-order"
+        [disabled]="checkoutForms.invalid || checkoutForms.disabled">Отправить
         </button>
         <div class="text-danger fw-bold" *ngIf="errorResponse">Произошла ошибка. Попробуйте еще раз</div>
       </div>
     </form>
     <div class="modal-body mx-4 d-block" *ngIf="successResponse">
-      <p class="h2">Спасибо за заказ!<br>
+      <p class="custom-h2">Спасибо за заказ!<br>
         Мы свяжемся с вами в ближайшее время!</p>
     </div>
 

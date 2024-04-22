@@ -1,9 +1,9 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
-import {ActivatedRoute, Router} from "@angular/router";
-import {ProductService} from "../../../services/product-service.service";
+import {ActivatedRoute, Params, Router} from "@angular/router";
 import {ProductType} from "../../../types/product.type";
 import {Subscription} from "rxjs";
+import {ProductService} from "../../shared/services/product-service.service";
 
 @Component({
   selector: 'order',
@@ -42,10 +42,10 @@ export class OrderComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.subscription = this.activatedRoute.params.subscribe((params) => {
+    this.subscription = this.activatedRoute.params.subscribe((params:Params) => {
       if (params['id']) {
         this.productService.getProduct(+params['id'])
-          .subscribe(data => {
+          .subscribe((data:ProductType) => {
             if (data) {
               this.product = data;
             }
@@ -54,7 +54,7 @@ export class OrderComponent implements OnInit, OnDestroy {
         this.router.navigate(['/products']);
       }
     });
-    if(this.orderBtn){
+    if (this.orderBtn) {
       this.orderBtn.removeAttribute("disabled");
     }
   }
@@ -68,7 +68,7 @@ export class OrderComponent implements OnInit, OnDestroy {
 
     if (!this.checkoutForms.invalid) {
 
-      if(this.orderBtn){
+      if (this.orderBtn) {
         this.orderBtn.setAttribute("disabled", "disabled");
       }
 
@@ -90,7 +90,7 @@ export class OrderComponent implements OnInit, OnDestroy {
             }, 3000);
           } else {
             this.errorResponse = true;
-            if(this.orderBtn){
+            if (this.orderBtn) {
               this.orderBtn.removeAttribute("disabled");
             }
           }
